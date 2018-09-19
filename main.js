@@ -3,17 +3,17 @@ const http = require('http');
 const port = 1234;
 
 const app = http.createServer((request,response) => {
-	var q, resp;
+	var q, respJSON;
 	q = url.parse(request.url,true).query;
 	if(q.word && q.word == 'hello'){
-		resp = 'world!';
+		respJSON = {response:'world!'};
 		console.log('query: '+q.word);
 	} else {
-		resp = 'hello?';
+		respJSON = {response:'hello?'};
 	}
 	
-	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.write(resp);
+	response.writeHead(200, {'Content-Type': 'application/json','json':'true'});
+	response.write(JSON.stringify(respJSON));
 	response.end();
 });
 
