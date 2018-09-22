@@ -6,10 +6,10 @@ const app = http.createServer((request,response) => {
 	var q, respJSON;
 	q = url.parse(request.url,true).query;
 	if(q.word && q.word == 'hello'){
-		respJSON = {response:'world!'};
+		respJSON = {thing:'world!'};
 		console.log('query: '+q.word);
 	} else {
-		respJSON = {response:'hello?'};
+		respJSON = {thing:'hello?'};
 	}
 	
 	response.writeHead(200, {'Content-Type': 'application/json','json':'true'});
